@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require "locksmith-cli"
+
+Locksmith::CLI::Root.start(ARGV)

@@ -1,0 +1,9 @@
+*.gem
+*.rbc
+.bundle
+.config
+.yardoc
+/coverage
+/doc/
+.ruby-version
+/test-reports
