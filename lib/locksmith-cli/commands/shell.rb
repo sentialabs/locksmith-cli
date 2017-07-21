@@ -10,9 +10,10 @@ module Locksmith
 
         env = self.class.clean_environment
 
-        
-        Environment::ENVIRONMENT_VARIABLES.each do |key, var|
-          env[var.to_s] = role.send(key).to_s
+        Environment::ENVIRONMENT_VARIABLES.each do |key, envs|
+          (envs.respond_to?(:each) ? envs : [envs]).each do |e|
+            env[e.to_s] = role.send(key).to_s
+          end
         end
 
         command = "#{Etc.getpwnam(Etc.getlogin).shell} -l"

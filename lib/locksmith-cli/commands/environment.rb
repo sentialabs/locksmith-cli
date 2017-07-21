@@ -13,15 +13,17 @@ module Locksmith
         expiration: :AWS_SESSION_EXPIRES,
         name: :AWS_SESSION_ACCOUNT_NAME,
         secret_access_key: :AWS_SECRET_ACCESS_KEY,
-        session_token: :AWS_SESSION_TOKEN
+        session_token: [:AWS_SESSION_TOKEN, :AWS_SECURITY_TOKEN]
       }
 
       def env
         role = Prompt.for.role(ARGV[1]) # hacky way to obtain query
         exit false if role.nil?
 
-        ENVIRONMENT_VARIABLES.each do |key, env|
-          puts "export #{env}=\"#{role.send(key)}\""
+        ENVIRONMENT_VARIABLES.each do |key, envs|
+          (envs.respond_to?(:each) ? envs : [envs]).each do |e|
+            puts "export #{e}=\"#{role.send(key)}\""
+          end
         end
       end
     end
