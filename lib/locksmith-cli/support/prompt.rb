@@ -33,8 +33,8 @@ module Locksmith
       )
     end
 
-    def self.role(query = nil, confirm = nil)
-      bookmark(query, confirm).assume_role(
+    def self.role(query = nil, flag = nil)
+      bookmark(query, flag).assume_role(
         ENV["LS_AWS_ACCESS_KEY_ID"],
         ENV["LS_AWS_SECRET_ACCESS_KEY"],
         ENV["LS_AWS_MFA_SERIAL"]
