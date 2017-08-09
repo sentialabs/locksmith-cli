@@ -5,7 +5,7 @@ module Locksmith
   module CLI
     class Shell < Thor::Group
       def sh
-        role = Prompt.for.role(ARGV[1]) # hacky way to obtain query
+        role = Prompt.for.role(ARGV[1], ARGV[2]) # hacky way to obtain query
         exit false if role.nil?
 
         env = self.class.clean_environment
