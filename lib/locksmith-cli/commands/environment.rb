@@ -17,7 +17,7 @@ module Locksmith
       }
 
       def env
-        role = Prompt.for.role(ARGV[1]) # hacky way to obtain query
+        role = Prompt.for.role(ARGV[1], ARGV[2]) # hacky way to obtain query
         exit false if role.nil?
 
         ENVIRONMENT_VARIABLES.each do |key, envs|

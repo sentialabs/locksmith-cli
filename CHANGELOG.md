@@ -2,6 +2,8 @@
 
 ### 0.2.1 (Next)
 
+  * Added -y flag to proceed to MFA token if the query has only 1 result
+    -- [@dennisvink][@dennisvink]
 
 ### 0.2.0
 
@@ -20,4 +22,5 @@
   * Add sh command, to open a shell with the environment variables set
     -- [@tader][@tader]
 
+[@dennisvink]: https://github.com/dennisvink/
 [@tader]: https://github.com/tader/
