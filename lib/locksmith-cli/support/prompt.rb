@@ -8,7 +8,7 @@ module Locksmith
       self
     end
 
-    def self.bookmark(query = nil, flag = nil)
+    def self.bookmark(query = nil, confirm = nil)
       bookmarks = Bookmark.query(
         ENV["LS_API_URL"],
         ENV["LS_API_USER"],
@@ -21,7 +21,7 @@ module Locksmith
         exit false
       end
 
-      if flag == "-y" && bookmarks.count == 1
+      if confirm == "-y" && bookmarks.count == 1
         print "Select account "
         puts "\e[32m#{bookmarks.first()}\e[0m"
         return bookmarks.first()
@@ -33,8 +33,8 @@ module Locksmith
       )
     end
 
-    def self.role(query = nil, flag = nil)
-      bookmark(query, flag).assume_role(
+    def self.role(query = nil, confirm = nil)
+      bookmark(query, confirm).assume_role(
         ENV["LS_AWS_ACCESS_KEY_ID"],
         ENV["LS_AWS_SECRET_ACCESS_KEY"],
         ENV["LS_AWS_MFA_SERIAL"]
